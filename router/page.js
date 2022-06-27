@@ -31,6 +31,14 @@ router.get('/api/equation',async(req,res)=>{
     res.send(arr)
 })
 
+router.get('/page/view',async(req,res)=>{
+    let pages = await Page.find().lean()
+    let lastpage= await Page.find().sort({_id:-1}).limit(1).lean()
+    res.render('page/view',{
+        title:'View' 
+    })
+})
+
 router.get('/api/list',async(req,res)=>{
     let lastpage= await Page.find().sort({_id:-1}).limit(1).lean()
     res.send(lastpage)
