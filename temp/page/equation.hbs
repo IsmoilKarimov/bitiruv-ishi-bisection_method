@@ -6,6 +6,9 @@
     <div>
         <h4>Tenglamaning ko'rinishi:</h4>
         <h5>P<sub>n</sub>(x) = a<sub>0</sub>*x <sup>n</sup> + a<sub>1</sub>*x <sup>n-1</sup> + a<sub>2</sub>*x <sup>n-2</sup> + ... + a<sub>n</sub></h5>
+        <h5 id="view">P<sub>n</sub>(x) =
+       
+        </h5>
     </div>
 </div>
 
@@ -93,8 +96,39 @@
 <a href="/" class="btn btn-warning mt-4 ms-auto">Bosh sahifaga qaytish</a>
 
     <script>
+let view=document.getElementById('view')
+        fetch('http://localhost:3000/api/equation')
+        .then(res=>res.json())
+        .then(data=>{
+            data && data.forEach((item,index)=>{        
+                    if(item<0){
+                        if(data.length-index-1===0){
+                            view.innerHTML+=`(${item})`
+                        }
+                        else if(data.length-index-1 === 1) {
+                            view.innerHTML+=`(${item})*x +`
+                        }
+                        else{
+                            view.innerHTML+=`(${item})*x <sup>${data.length-index-1}</sup>+`
+                        }
+                    }
+                    else{
+                     if(data.length-index-1===0){
+                        view.innerHTML+=`${item}`
+                    }
+                    else if(data.length-index-1=== 1) {
+                    view.innerHTML+=`${item}*x +`
+                    }
+                    else {
+                        view.innerHTML+=`${item}*x <sup>${data.length-index-1}</sup>+`
+                    }
+                    }
+                
+                })
+              
+            })
+
         async function sendMesage(){
-            
             let form=document.forms.math
             let listinput=Array.from(document.querySelectorAll('#list .item input'))
             console.log(listinput)
@@ -105,8 +139,6 @@
                 else 0
             })
             let massiv = [1,2,3,4]
-
-
             let info = {
                 a: 1,
                 b: 2,
@@ -126,6 +158,8 @@
                 .then( (response) => { 
                     console.log(response)
                 });
+
+                {{!-- document.getElementById('exampleModal').classList.remove('show') --}}
         }
       
         function changeNumber(e){
