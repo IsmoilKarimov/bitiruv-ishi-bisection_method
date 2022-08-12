@@ -29,7 +29,7 @@ server.post('/',(req,res)=>{
 
 server.use(pageRouter)
 
-const PORT = 3000
+const PORT = 4004
 
 async function dev(){
     try {

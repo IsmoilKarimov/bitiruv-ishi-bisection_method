@@ -48,7 +48,7 @@ router.post('/page/equation',async(req,res)=>{
     let {n,a,b,E,arr} = req.body 
     let page = await new Page({n,a,b,E,arr})
     await page.save()
-    res.redirect('/')
+    res.redirect('/page/view')
 })
 
 router.get('/page/equation2',(req,res)=>{  

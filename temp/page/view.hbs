@@ -31,7 +31,7 @@
 
 
 
-<a href="/" class="btn btn-warning mt-4 ms-auto">Bosh sahifaga qaytish</a>
+<a href="/" class="btn btn-warning mt-4 ms-auto mb-5">Bosh sahifaga qaytish</a>
 
 
 
@@ -70,7 +70,6 @@
 
 //  api list 
     let obj={arr:[]}
-   
     fetch('http://localhost:3000/api/list')
     .then(res=>res.json())
     .then(data=>{
@@ -130,16 +129,15 @@ function rekursiya_bisection(a, b, E){
             else {
                 console.log(k + '-qadam: ' + `[${a};${b}] oraliqda  x=`+ x + `; f(${x})=${func(x)}`)
                 return rekursiya_bisection(x,b,E)
-            }   
-
-                           
+            }                     
     }
         document.querySelector('.viewtable').innerHTML+=`
             <p style="color:'red'">Ilzdining berilgan aniqlikdagi taqribiy qiymatini topish uchun sarflangan urinishlar soni: ${k}</p>
+            <p>Ifoda ildizining ${E} aniqlikdagi taqribiy qiymati: x =${x.toString().slice(0,6)}</p>
+            <p>Funksiyanig topilgan nuqtadagi qiymati: f(${x.toFixed(4)}) = ${func(x)}</p>
         `
         console.log('Ilzdining berilgan aniqlikdagi taqribiy qiymatini topish uchun sarflangan urinishlar soni:', k)
+        console.log(`Ifoda ildizining ${E} aniqlikdagi taqribiy qiymati: x =`, x)
+        console.log(`Funksiyanig topilgan nuqtadagi qiymati: f(${x.toString().slice(0,6)}) = ${func(x)}`)
 }
-
-
-
 </script>
